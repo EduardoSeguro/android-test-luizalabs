@@ -7,6 +7,8 @@ interface DetailContract : BaseContract {
 
     interface Presenter : BaseContract.Presenter<View> {
         fun fetchDetail(id: String)
+
+        fun fetchDetailWithError(id: String)
     }
 
     interface View : BaseContract.View {

@@ -67,9 +67,11 @@ val appModule = module {
     single<SetLocalGistUseCase> { SetLocalGistUseCaseImpl(repository = get()) }
     single<RemoveLocalGistUseCase> { RemoveLocalGistUseCaseImpl(repository = get()) }
 
-    single { DetailPresenterImpl(getGistDetailUseCase = get()) }
+    factory { DetailPresenterImpl(getGistDetailUseCase = get()) }
 
-    single {
+    factory { ListPresenterImpl(get(), get()) }
+
+    factory {
         FavoritePresenterImpl(
             getLocalGistUseCase = get(),
             removeLocalGistUseCase = get(),

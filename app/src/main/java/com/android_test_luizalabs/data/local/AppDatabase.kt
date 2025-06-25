@@ -5,7 +5,8 @@ import androidx.room.RoomDatabase
 
 @Database(
     version = 1,
-    exportSchema = false
+    exportSchema = false,
+    entities = [GistEntity::class]
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gistDao(): GistDao

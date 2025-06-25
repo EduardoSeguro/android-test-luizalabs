@@ -22,6 +22,17 @@ class DetailPresenterImpl(private val getGistDetailUseCase: GetGistDetailUseCase
         }
     }
 
+    override fun fetchDetailWithError(id: String) {
+        val errorId = "no id"
+        launch {
+            getGistDetailUseCase.invoke(errorId)
+                .onStart { view?.displayLoading(true) }
+                .onCompletion { view?.displayLoading(false) }
+                .catch { view?.showError(it) }
+                .collect { view?.displayGist(it) }
+        }
+    }
+
     override fun attachView(view: DetailContract.View) {
         this.view = view
     }

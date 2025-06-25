@@ -13,7 +13,7 @@ class ListAdapter(
     private val onItemFavoriteClick: (Boolean, Gist) -> Unit
 ) : ListAdapter<Gist, ListViewHolder>(DefaultDiffCallback<Gist>()) {
 
-    private var gistList: List<Gist> = listOf()
+    private var gistList: List<Gist?> = listOf()
     private var filteredGistList = gistList.toMutableList()
     var isFiltered: Boolean = false
 
